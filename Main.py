@@ -3,12 +3,16 @@ Created on 31/07/2017
 
 @author: olivia
 '''
+from sklearn.metrics.classification import accuracy_score
 '''
 Created on 31/07/2017
 
 @author: olivia
 '''
 from sklearn import tree
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.gaussian_process import GaussianProcessClassifier
+
 
 #[height, weight, shoe size]
 X = [[181,80,44],[177,70,43],[160,60,38],[154,54,37],
@@ -17,12 +21,28 @@ X = [[181,80,44],[177,70,43],[160,60,38],[154,54,37],
 Y = ['male', 'female', 'female', 'female','male', 'male','male',
      'female', 'male', 'female', 'male']
 
-#Classifiers
-
+##Training the models
 #Decision Tree
 DTclf = tree.DecisionTreeClassifier()
 DTclf = DTclf.fit(X,Y)
 
-prediction = DTclf.predict([[190,70,43]])
+#Nearest Neighbour
+NNclf = KNeighborsClassifier()
+NNclf = NNclf.fit(X, Y)
 
-print(prediction)
+#Guassian Process
+GPclf = GaussianProcessClassifier()
+GPclf = GPclf.fit(X, Y)
+
+#Test using the same data
+DTpred = DTclf.predict(X)
+DTacc = accuracy_score(Y, DTpred)*100
+print("Accuracy for Decision Tree: %s"% DTacc)
+
+NNpred = NNclf.predict(X)
+NNacc = accuracy_score(Y, NNpred)*100
+print("Accuracy for Nearest Neighbour: %s" % NNacc)
+
+GPpred = GPclf.predict(X)
+GPacc = accuracy_score(Y, GPpred)*100
+print("Accuracy for Gaussian Process: %s" % GPacc)
