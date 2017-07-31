@@ -18,9 +18,11 @@ Y = ['male', 'female', 'female', 'female','male', 'male','male',
      'female', 'male', 'female', 'male']
 
 #Classifiers
-clf = tree.DecisionTreeClassifier()
-clf = clf.fit(X,Y)
 
-prediction = clf.predict([[190,70,43]])
+#Decision Tree
+DTclf = tree.DecisionTreeClassifier()
+DTclf = DTclf.fit(X,Y)
+
+prediction = DTclf.predict([[190,70,43]])
 
 print(prediction)
