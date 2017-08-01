@@ -4,11 +4,6 @@ Created on 31/07/2017
 @author: olivia
 '''
 from sklearn.metrics.classification import accuracy_score
-'''
-Created on 31/07/2017
-
-@author: olivia
-'''
 from sklearn import tree
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.gaussian_process import GaussianProcessClassifier
